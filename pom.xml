@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>info.mktt</groupId>
-	<artifactId>optim</artifactId>
+	<artifactId>optimo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>optim</name>
+	<name>optimo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>

@@ -1,10 +1,10 @@
-package info.mktt.optim;
+package info.mktt.optimo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OptimApplicationTests {
+class OptimoApplicationTests {
 
 	@Test
 	void contextLoads() {

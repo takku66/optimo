@@ -1,13 +1,13 @@
-package info.mktt.optim;
+package info.mktt.optimo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OptimApplication {
+public class OptimoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OptimApplication.class, args);
+		SpringApplication.run(OptimoApplication.class, args);
 	}
 
 }

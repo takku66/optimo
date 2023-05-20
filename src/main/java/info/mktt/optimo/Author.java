@@ -1,4 +1,4 @@
-package info.mktt.optim;
+package info.mktt.optimo;
 
 import java.util.Arrays;
 import java.util.List;
