@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "60d96842-0bb0-4a7d-ac6f-db2a922091ef",
+		"name": "練習",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26181907"
+	},
+	"item": [
+		{
+			"name": "Bookの取得",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Bookの取得",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query bookDetails {\r\n  bookById(id: \"book-2\") {\r\n    id\r\n    name\r\n    pageCount\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 13:58:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"bookById\": {\n            \"id\": \"book-2\",\n            \"name\": \"Hitchhiker's Guide to the Galaxy\",\n            \"pageCount\": 208,\n            \"author\": {\n                \"id\": \"author-2\",\n                \"firstName\": \"Douglas\",\n                \"lastName\": \"Adams\"\n            }\n        }\n    }\n}"
+				},
+				{
+					"name": "Bookの取得",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query bookDetails {\r\n  bookById(id: \"book-2\") {\r\n    author {\r\n      id\r\n      firstName\r\n      lastName\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 14:00:29 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"bookById\": {\n            \"id\": \"book-2\",\n            \"name\": \"Hitchhiker's Guide to the Galaxy\",\n            \"pageCount\": 208,\n            \"author\": {\n                \"id\": \"author-2\",\n                \"firstName\": \"Douglas\",\n                \"lastName\": \"Adams\"\n            }\n        }\n    }\n}"
+				},
+				{
+					"name": "Bookの取得",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query bookDetails {\r\n  bookById(id: \"book-2\") {\r\n    id\r\n    name\r\n    pageCount\r\n    author {\r\n      id\r\n      firstName\r\n      lastName\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
