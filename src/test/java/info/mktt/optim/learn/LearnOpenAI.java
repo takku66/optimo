@@ -19,15 +19,22 @@ import org.springframework.core.env.Environment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SpringBootTest
+import info.mktt.optimo.OptimoApplication;
+
+@SpringBootTest(classes=OptimoApplication.class)
 public class LearnOpenAI {
 
-    String PROPERTY_API_KEY = "openapi.api-key";
-
-    ObjectMapper mapper = new ObjectMapper();
-
+    // プロパティファイルから設定値を取得する
     @Autowired
     Environment environment;
+
+    // プロパティのキー文字列を定義
+    /** OpenAIのAPIキー */
+    String PROPERTY_API_KEY = "openapi.api-key";
+    /** OpenAIの組織ID */
+    String PROPERTY_ORGANIZATION_KEY = "openapi.organization-key";
+
+    ObjectMapper mapper = new ObjectMapper();
 
     @Test
     void OpenAIに正しいパラメータを設定すればレスポンスステータス200が返ってくる() throws IOException{
@@ -45,7 +52,6 @@ public class LearnOpenAI {
 
         // レスポンスを取得し、正常・異常問わず結果をコンソールに出力する
         try(BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));){
-
             String successResponse = extractInputStream(in);
             System.out.println(successResponse.toString());
         }catch(IOException e){
@@ -86,10 +92,11 @@ public class LearnOpenAI {
 
     private void writeProperty(HttpURLConnection con) throws ProtocolException{
         var API_KEY = environment.getProperty(PROPERTY_API_KEY);
+        var ORGANIZATION_KEY = environment.getProperty(PROPERTY_ORGANIZATION_KEY);
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty("Authorization", "Bearer " + API_KEY);
-        con.setRequestProperty("OpenAI-Organization", "org-RXGuQAaTwyKyHo5ixtbhkfHr");
+        con.setRequestProperty("OpenAI-Organization", ORGANIZATION_KEY);
         con.setDoOutput(true);
     }
 
