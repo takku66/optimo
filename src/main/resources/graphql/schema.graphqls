@@ -1,5 +1,13 @@
 type Query {
     bookById(id: ID): Book
+    memoById(id: ID): Memo
+}
+
+# Common
+type Error {
+  code: String # エラーコード
+  message: String # 開発者向けメッセージ
+  displayMessage: String # ユーザー向けメッセージ
 }
 
 type Book {
@@ -13,4 +21,11 @@ type Author {
     id: ID
     firstName: String
     lastName: String
+}
+
+type Memo {
+    id: ID
+    title: String
+    content: String
+    categories: [String]
 }
