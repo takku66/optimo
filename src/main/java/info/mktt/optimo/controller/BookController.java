@@ -1,12 +1,12 @@
-package info.mktt.optim.controller;
+package info.mktt.optimo.controller;
 
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
-import info.mktt.optim.Author;
-import info.mktt.optim.Book;
+import info.mktt.optimo.Author;
+import info.mktt.optimo.Book;
 
 /**
  * 本のControllerクラス
