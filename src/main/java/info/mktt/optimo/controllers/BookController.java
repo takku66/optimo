@@ -1,4 +1,4 @@
-package info.mktt.optimo.controller;
+package info.mktt.optimo.controllers;
 
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;

@@ -132,13 +132,33 @@ public class LearnOpenAI {
      * @throws IOException
      */
     private void writeBodyForValidParameter(HttpURLConnection con) throws UnsupportedEncodingException, IOException{
+        String content = "Say this is a test!";
+        // String content = """
+        //     以下の内容を確認して、タイトルと最大10個のカテゴリをつけてください。
+        //     返答の内容はJSONの形で、タイトルは文字列型でキー名をtitle、カテゴリは配列型でキー名をcategories、原文は文字列型でキー名をcontentとしてください。
+        //     以下に内容を記載します。
+
+        //     最近、仕事に対して不満を感じています。毎日のルーティン作業に飽き足らず、やりがいや成長を感じることができなくなってしまいました。同じような業務を続けることに疲れを感じ、もっとやりたいことや興味のある分野に挑戦したいと思っています。しかし、自分のスキルや経験が限られているため、転職やキャリアチェンジを考えるにも不安があります。
+
+        //     今後のキャリアについてどのような選択肢があり、どのように進めばいいのか迷っています。自分の能力や関心を生かしながら、仕事のやりがいや成長を感じる方法を見つけるためにはどのようなアプローチが有効でしょうか？また、スキルや経験をどのように伸ばしていけば、新しいキャリアに挑戦する準備ができるのかアドバイスをいただけますか？
+            
+        //     自分の将来について迷っている状況で、どのように進むべきかアドバイスをいただけると助かります。
+        // """;
+        // """
+        //     以下の内容を確認して、タイトルと最大10個のカテゴリをつけてください。
+        //     返答の内容は下記の形に従ってください。
+        //     title:<返答内容のタイトル>
+        //     categories:<返答内容のカテゴリをカンマ区切り>
+        //     content:<原文>
+        //         """;
+
         var sendData = new HashMap<String, Object>();
         var messages = new ArrayList<Object>();
         messages.add(
             new HashMap<String, Object>(){
                 {
                     put("role", "user");
-                    put("content", "Say this is a test!");
+                    put("content", content);
                 }
             }
         );
