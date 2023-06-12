@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +18,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.mktt.optimo.Memo;
 import info.mktt.optimo.utils.HttpURLConnectionWrapper;
 
+/**
+ * OpenAIに関する連携用のサービスクラス
+ */
 @Service
 public class OpenAIService {
  
-    @Autowired
     private final Environment environment;
     private final String apiKey;
     private final String orgId;
@@ -38,13 +39,25 @@ public class OpenAIService {
     private final String OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
 
+    /**
+     * コンストラクタ
+     * <p>プロパティファイルから読み取ったAPIキーなどもここで設定される。
+     * @param environment
+     */
     public OpenAIService(Environment environment){
         this.environment = environment;
         this.apiKey = this.environment.getProperty(this.PROPERTY_API_KEY);
         this.orgId = this.environment.getProperty(this.PROPERTY_ORGANIZATION_KEY);
     }
 
-    
+    /**
+     * 引数に渡された内容をOpenAIに処理してもらい、メモオブジェクトを生成する。
+     * @param content メモオブジェクトにしたい内容
+     * @return {@link Memo}
+     * @throws UnsupportedEncodingException
+     * @throws ProtocolException
+     * @throws IOException
+     */
     public Memo requestOptimize(String content) throws UnsupportedEncodingException, ProtocolException, IOException{
 
         // OpenAIに送信するためのチャット内容を生成する。
@@ -75,6 +88,12 @@ public class OpenAIService {
         }
     }
 
+    /**
+     * OpenAIに処理してもらう前に、指定のフォーマットで返してもらえるように前文をつけたメッセージを作成する。
+     * <p>タイトルとカテゴリ10個を、Jsonで返すように指示している。
+     * @param content
+     * @return 
+     */
     private List<Object> createMessages(String content){
         String contentPrefix = """
             以下の内容を確認して、タイトルと最大10個のカテゴリをつけてください。
@@ -95,6 +114,12 @@ public class OpenAIService {
         return messages;
     }
 
+    /**
+     * OpenAIから返ってきたjson形式の回答をパースし、{@link Memo}を作成する。
+     * @param json OpenAIから返ってきたjson文字列の回答。
+     * @return {@link Memo}
+     * @throws IOException
+     */
     private Memo createMemo(String json) throws IOException{
         JsonNode responseJson = mapper.readTree(json);
         String detailJson = responseJson.get("choices").get(0).get("message").get("content").toString();
