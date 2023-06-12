@@ -32,4 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+### Node ###
+/node_modules/
+**/node_modules/
+
+
 application-credentials.yml
